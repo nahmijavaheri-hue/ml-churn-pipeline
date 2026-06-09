@@ -32,6 +32,7 @@ def build_pipeline() -> Pipeline:
     return Pipeline([("pre", pre), ("clf", clf)])
 
 def main():
+    mlflow.set_tracking_uri("sqlite:///" + str(Path(__file__).parent.parent / "mlflow.db"))
     train = pd.read_csv(DATA / "train.csv")
     test = pd.read_csv(DATA / "test.csv")
     X_train = train[NUM_FEATURES + CAT_FEATURES]
