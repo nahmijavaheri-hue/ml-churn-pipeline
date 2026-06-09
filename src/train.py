@@ -12,6 +12,7 @@ import mlflow
 import mlflow.sklearn
 import shap
 from pathlib import Path
+import shutil
 
 DATA = Path(__file__).parent.parent / "data"
 MODELS = Path(__file__).parent.parent / "models"
@@ -75,6 +76,7 @@ def main():
             print(f"{feature}: {shap_value:.4f}")
 
         MODELS.mkdir(exist_ok=True)
+        shutil.rmtree(MODELS / "churn_pipeline", ignore_errors=True)
         mlflow.sklearn.save_model(pipe, MODELS / "churn_pipeline")
 if __name__ == "__main__":
     main()
