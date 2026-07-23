@@ -30,7 +30,7 @@ ml-churn-pipeline/
 
 ## Current Progress
 
-### ✅ Data Generation (`src/generate_data.py`)
+### Data Generation (`src/generate_data.py`)
 
 Generates a synthetic dataset of 10,000 customers with realistic churn behaviour. Rather than assigning churn randomly, it uses a **logistic formula** to simulate real-world drivers:
 
@@ -68,7 +68,7 @@ The data is split **80% train / 20% test** with no row overlap — the training 
 
 ---
 
-### ✅ Model Training (`src/train.py`)
+### Model Training (`src/train.py`)
 
 #### The sklearn Pipeline
 
@@ -132,7 +132,7 @@ Every training run logs hyperparameters and metrics to MLflow. Run `mlflow ui` t
 
 ## Upcoming
 
-### 🔲 Inference API (`api/main.py`)
+### Inference API (`api/main.py`)
 
 A FastAPI server that loads the trained model and serves real-time predictions:
 
@@ -140,7 +140,7 @@ A FastAPI server that loads the trained model and serves real-time predictions:
 - `POST /predict/batch` — bulk predictions for up to 1000 customers
 - `GET /health` — confirms the model is loaded and the server is ready
 
-### 🔲 Drift Monitoring (`src/monitor.py`)
+### Drift Monitoring (`src/monitor.py`)
 
 Uses Evidently to compare the training data distribution against new incoming data and detect when the model's inputs have shifted — a common cause of silent model degradation in production:
 
